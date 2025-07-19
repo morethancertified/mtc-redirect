@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview - More Than Certified Maintenance Page</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .preview-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .preview-header {
+            background: linear-gradient(135deg, #00CED1 0%, #8A2BE2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .preview-content {
+            padding: 20px;
+        }
+        .preview-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .preview-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #00CED1;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        .preview-link:hover {
+            opacity: 0.9;
+        }
+        .iframe-container {
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .iframe-header {
+            background: #f9fafb;
+            padding: 10px 15px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 14px;
+            color: #6b7280;
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            display: block;
+        }
+        .device-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .device-btn {
+            padding: 8px 16px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .device-btn.active {
+            border-color: #00CED1;
+            background: #00CED1;
+            color: white;
+        }
+        .instructions {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .instructions h3 {
+            margin-top: 0;
+            color: #0369a1;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <div class="preview-header">
+            <h1>🚀 More Than Certified - Maintenance Page Preview</h1>
+            <p>Test your maintenance page before deployment</p>
+        </div>
+        
+        <div class="preview-content">
+            <div class="preview-links">
+                <a href="index.html" class="preview-link" target="_blank">🏠 Main Page</a>
+                <a href="404.html" class="preview-link" target="_blank">❌ 404 Page</a>
+                <a href="styles.css" class="preview-link" target="_blank">🎨 Styles</a>
+            </div>
+            
+            <div class="device-buttons">
+                <button class="device-btn active" onclick="setDevice('desktop')">🖥️ Desktop</button>
+                <button class="device-btn" onclick="setDevice('tablet')">📱 Tablet</button>
+                <button class="device-btn" onclick="setDevice('mobile')">📱 Mobile</button>
+            </div>
+            
+            <div class="iframe-container">
+                <div class="iframe-header">
+                    <span id="current-view">Desktop View (1200px)</span>
+                </div>
+                <iframe id="preview-frame" src="index.html"></iframe>
+            </div>
+            
+            <div class="instructions">
+                <h3>🧪 Testing Checklist</h3>
+                <ul>
+                    <li><strong>Responsive Design:</strong> Test all device sizes using the buttons above</li>
+                    <li><strong>Dark Mode:</strong> Check if your system dark mode affects the page</li>
+                    <li><strong>Links:</strong> Verify all contact and social links work correctly</li>
+                    <li><strong>Animations:</strong> Ensure floating icons and transitions work smoothly</li>
+                    <li><strong>Accessibility:</strong> Test keyboard navigation (Tab key)</li>
+                    <li><strong>404 Page:</strong> Test the custom error page</li>
+                    <li><strong>Loading Speed:</strong> Check page loads quickly</li>
+                    <li><strong>Content:</strong> Verify all text and contact information is correct</li>
+                </ul>
+            </div>
+            
+            <div class="instructions">
+                <h3>🚀 Ready to Deploy?</h3>
+                <p>If everything looks good, run the deployment script:</p>
+                <code style="background: #f3f4f6; padding: 5px 10px; border-radius: 4px; font-family: monospace;">
+                    ./deploy.sh
+                </code>
+                <p style="margin-top: 10px;">Or manually push to GitHub and enable Pages in repository settings.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setDevice(device) {
+            const frame = document.getElementById('preview-frame');
+            const viewLabel = document.getElementById('current-view');
+            const buttons = document.querySelectorAll('.device-btn');
+            
+            // Remove active class from all buttons
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Set iframe dimensions
+            switch(device) {
+                case 'desktop':
+                    frame.style.width = '100%';
+                    frame.style.height = '600px';
+                    viewLabel.textContent = 'Desktop View (1200px)';
+                    break;
+                case 'tablet':
+                    frame.style.width = '768px';
+                    frame.style.height = '600px';
+                    frame.style.margin = '0 auto';
+                    viewLabel.textContent = 'Tablet View (768px)';
+                    break;
+                case 'mobile':
+                    frame.style.width = '375px';
+                    frame.style.height = '600px';
+                    frame.style.margin = '0 auto';
+                    viewLabel.textContent = 'Mobile View (375px)';
+                    break;
+            }
+        }
+        
+        // Auto-refresh iframe every 2 seconds to catch changes during development
+        setInterval(() => {
+            const frame = document.getElementById('preview-frame');
+            if (frame.src.includes('index.html')) {
+                frame.src = frame.src;
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

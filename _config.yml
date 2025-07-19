@@ -1,0 +1,54 @@
+# GitHub Pages Configuration
+# This file configures GitHub Pages settings for the More Than Certified maintenance page
+
+# Site settings
+title: "More Than Certified - Maintenance"
+description: "More Than Certified is currently undergoing maintenance. We'll be back soon with enhanced features and improved performance."
+url: "https://morethancertified.github.io"
+baseurl: "/mtc-redirect"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - .gitignore
+  - .github/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+
+# Include files that start with underscores
+include:
+  - _pages
+
+# Plugin settings
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+
+# SEO settings
+author: "More Than Certified"
+twitter:
+  username: morethancert
+  card: summary_large_image
+
+# Social links
+social:
+  name: "More Than Certified"
+  links:
+    - https://twitter.com/morethancert
+    - https://linkedin.com/company/morethancertified
+    - https://github.com/morethancertified
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      author: "More Than Certified"

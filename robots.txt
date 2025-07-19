@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# Maintenance page - temporarily block all crawlers
+# Remove this file when maintenance is complete
